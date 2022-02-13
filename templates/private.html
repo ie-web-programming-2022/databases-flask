@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+
+{% block title %}Private | paymepal{% endblock %}
+
+{% block main %}
+<em>Hello {{user[1]}}</em>
+
+<h2>transactions</h2>
+<ul class="transactions">
+    {% for transaction in transactions %}
+    <li><strong>{{transaction[2]}}</strong>  {{transaction[0]}} {{transaction[1]}}</li>
+    {% endfor %}
+</ul>
+
+<h2>create new transaction</h2>
+<form action="http://127.0.0.1:5000/insert" method="POST">
+    <input type="text" name="amount" placeholder="Amount" id="amount">
+    <input type="text" name="shop" placeholder="Shop" id="shop">
+    <input type="text" name="username" id="username" value="{{user[1]}}">
+    <input type="submit" value="submit" class="submit">
+</form>
+
+{% endblock %}
